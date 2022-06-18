@@ -6,6 +6,7 @@
 
 <ui>
   <li>Binary Search</li>
+  <li>Breadth Search</li>
   <li>Normal Search</li>
   <li>Selection Sort</li>
   <li>Quick Sort</li>
