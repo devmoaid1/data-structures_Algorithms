@@ -49,6 +49,8 @@ List<int> selectionSort(List<int> array) {
   return sorted;
 }
 
+
+// countDown using recursive calling
 void countDown(int n) {
   if (n <= 0) {
     return;
@@ -57,7 +59,7 @@ void countDown(int n) {
     countDown(n - 1);
   }
 }
-
+// get sum of list of numbers using recursive calling 
 int getSum(List<int> numbers) {
   int total = 0;
 
@@ -74,6 +76,8 @@ int getSum(List<int> numbers) {
   }
 }
 
+
+// get count using recursive calling 
 int getCount(List list) {
   int counter = 0;
 
@@ -89,6 +93,8 @@ int getCount(List list) {
   }
 }
 
+
+// get max number from list using recursive calling 
 int getMax(List<int> list) {
   int max = 0;
 
@@ -107,11 +113,13 @@ int getMax(List<int> list) {
   }
 }
 
+
 List<int> quickSort(List<int> list) {
   List<int> smaller = [];
   List<int> larger = [];
 
   if (list.length < 2) {
+    // list is sorted 
     return list;
   } else {
     int pivot = list[list.length - 2];
