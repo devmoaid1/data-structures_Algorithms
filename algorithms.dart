@@ -49,7 +49,6 @@ List<int> selectionSort(List<int> array) {
   return sorted;
 }
 
-
 // countDown using recursive calling
 void countDown(int n) {
   if (n <= 0) {
@@ -59,7 +58,8 @@ void countDown(int n) {
     countDown(n - 1);
   }
 }
-// get sum of list of numbers using recursive calling 
+
+// get sum of list of numbers using recursive calling
 int getSum(List<int> numbers) {
   int total = 0;
 
@@ -76,8 +76,7 @@ int getSum(List<int> numbers) {
   }
 }
 
-
-// get count using recursive calling 
+// get count using recursive calling
 int getCount(List list) {
   int counter = 0;
 
@@ -93,8 +92,7 @@ int getCount(List list) {
   }
 }
 
-
-// get max number from list using recursive calling 
+// get max number from list using recursive calling
 int getMax(List<int> list) {
   int max = 0;
 
@@ -113,13 +111,12 @@ int getMax(List<int> list) {
   }
 }
 
-
 List<int> quickSort(List<int> list) {
   List<int> smaller = [];
   List<int> larger = [];
 
   if (list.length < 2) {
-    // list is sorted 
+    // list is sorted
     return list;
   } else {
     int pivot = list[list.length - 2];
@@ -151,4 +148,46 @@ bool mangoSellerBreadthSearch(Map<String, dynamic> graph) {
     }
   }
   return false;
+}
+
+Map dijkstra(Map<String, Map> graph, Map<String, dynamic> parents,
+    Map<String, dynamic> costs) {
+  List<String> proccessedNodes = [];
+
+  String node = getLowestNode(
+      costs, proccessedNodes); // get lowest nodes and unprocessed yet
+  while (node.isNotEmpty) {
+    var cost = costs[node]; // current cost for node
+    var neighboors = graph[node]; // neighboors nodes to process
+
+    for (var n in neighboors!.keys.toList()) {
+      var newCost = cost + neighboors[n];
+
+      if (costs[n] > newCost) {
+        costs[n] = newCost; // update cost with the less cost of all nodes
+        parents[n] =
+            node; // update the parent for the node with the lowest node
+      }
+    }
+    proccessedNodes.add(node); // add node to processed
+    node = getLowestNode(costs, proccessedNodes);
+  }
+  print(parents);
+  return costs;
+}
+
+String getLowestNode(Map<String, dynamic> costs, List<String> proccessedNodes) {
+  int lowestCost = 100000;
+  String lowestNode = "";
+
+  for (String node in costs.keys.toList()) {
+    var cost = costs[node];
+
+    if (cost < lowestCost && !proccessedNodes.contains(node)) {
+      lowestCost = cost;
+      lowestNode = node;
+    }
+  }
+
+  return lowestNode;
 }
