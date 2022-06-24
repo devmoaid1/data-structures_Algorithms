@@ -11,6 +11,7 @@
   <li>Selection Sort</li>
   <li>Quick Sort</li>
   <li>Recursion</li>
+  <li>Dijkstra`s Algorithm</li>
   
 </ui>
   
